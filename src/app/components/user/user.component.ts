@@ -18,6 +18,7 @@ export class UserComponent {
   address: Address;
   hobbies: string[];
   posts: Post[];
+  error: string;
 
   constructor(private DataService: DataService) {
     this.address = { street: '50 Main st.', city: 'Boston', state: 'MA' }
@@ -25,7 +26,9 @@ export class UserComponent {
 
     this.DataService.getPosts().subscribe((posts: Post[]) => {
       this.posts = posts;
-    });
+    }, // success path
+      error => this.error = error // error path
+    );
   }
 
   removeHobby(event: Event, index) {
