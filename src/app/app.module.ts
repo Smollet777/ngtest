@@ -1,13 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
+import { AboutComponent } from './components/about/about.component';
 
 import { DataService } from './services/data.service';
-import { AboutComponent } from './components/about/about.component'
 
 const appRoutes: Routes = [
   { path: '', component: UserComponent },
@@ -20,7 +20,7 @@ const appRoutes: Routes = [
     UserComponent,
     AboutComponent
   ],
-  imports: [BrowserModule, HttpModule, RouterModule.forRoot(appRoutes)],
+  imports: [BrowserModule, HttpClientModule, RouterModule.forRoot(appRoutes)],
   providers: [DataService],
   bootstrap: [AppComponent]
 })
