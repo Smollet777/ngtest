@@ -6,10 +6,13 @@
 <p>address: {{address.street}} {{address.city}}, {{address.state}}</p>
 
 <h3>hobbies:</h3>
-<form (submit)="addHobby($event, hobby.value)">
-  <div>
-    <input type="text" #hobby placeholder="hobby" required autocomplete="off">
-    <button>add hobby</button>
+<form [formGroup]="form" (submit)="addHobby($event, hobby.value)" novalidate autocomplete="off">
+  <input type="text" placeholder="hobby" formControlName="hobby">
+  <button [disabled]="!form.valid">add hobby</button>
+  <div *ngIf="hobby.invalid && (hobby.dirty || hobby.touched)" class="alert alert-danger">
+    <div *ngIf="hobby.errors.required">
+      value is required.
+    </div>
   </div>
 </form>
 <ul>
