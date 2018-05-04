@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { DataService } from '../../services/data.service';
 
+import { Address } from '../../interfaces/address.interface';
+import { Post } from '../../interfaces/post.interface';
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -20,7 +23,7 @@ export class UserComponent {
     this.address = { street: '50 Main st.', city: 'Boston', state: 'MA' }
     this.hobbies = ['write code', 'watch movies', 'listen to music']
 
-    this.DataService.getPosts().subscribe((posts) => {
+    this.DataService.getPosts().subscribe((posts: Post[]) => {
       this.posts = posts;
     });
   }
@@ -37,17 +40,4 @@ export class UserComponent {
     }
   }
 
-}
-
-interface Post {
-  id: number,
-  title: string,
-  body: string,
-  userId: number
-}
-
-interface Address {
-  street: string,
-  city: string,
-  state: string
 }
