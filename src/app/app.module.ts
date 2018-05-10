@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { MaterialModule } from './material.module'
+
 import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
 import { AboutComponent } from './components/about/about.component';
@@ -23,9 +25,10 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    MaterialModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
