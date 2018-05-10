@@ -1,7 +1,7 @@
+
+import { throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-
-import { Observable } from 'rxjs';
 
 import { catchError, retry } from 'rxjs/operators';
 
@@ -35,7 +35,7 @@ export class DataService {
     }
     // return an observable with a user-facing error message
     //return Observable.throw(error);
-    return Observable.throw(new Error(`Server error! Status ${error.status}`));
+    return throwError(new Error(`Error! ${error.message}`));
   };
 
 }
