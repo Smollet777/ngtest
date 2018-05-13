@@ -4,22 +4,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material';
-import { MatCheckboxModule } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   imports: [
     MatInputModule
     , MatButtonModule
-    , MatCheckboxModule
     , MatIconModule
+    , MatSelectModule
     , BrowserAnimationsModule
   ],
   exports: [
     MatInputModule
     , MatButtonModule
-    , MatCheckboxModule
     , MatIconModule
+    , MatSelectModule
     , BrowserAnimationsModule
   ],
 })

@@ -1,25 +1,79 @@
 <p *ngIf="error" class="alert alert-danger">{{error}}</p>
 
-<p>user {{name}} works!</p>
-<p>age: {{age}}</p>
-<p>e-mail: {{email}}</p>
-<p>address: {{address.street}} {{address.city}}, {{address.state}}</p>
-
-<h3>hobbies:</h3>
-<form [formGroup]="form" (submit)="addHobby($event, hobby.value)" novalidate autocomplete="off">
-  <input type="text" placeholder="hobby" formControlName="hobby">
-  <button [disabled]="!form.valid">add hobby</button>
-  <div *ngIf="hobby.invalid && (hobby.dirty || hobby.touched)" class="alert alert-danger">
-    <div *ngIf="hobby.errors.required">
-      value is required.
+<h3>user {{user.name}} works!</h3>
+<p>age: {{user.age}}</p>
+<p>e-mail: {{user.email}}</p>
+<p>address: {{user.address.street}} {{user.address.city}}, {{user.address.state}}</p>
+<div>
+  <form [formGroup]="formUser" (submit)="addUser($event)" novalidate autocomplete="off">
+    <mat-form-field>
+      <mat-error #nameError>{{getErrorMessage(name)}}</mat-error>
+      <input matInput type="text" placeholder="name" formControlName="name">
+      <mat-icon aria-hidden="true" (mouseenter)="nameError.classList.toggle('showError');" (mouseleave)="nameError.classList.toggle('showError');"
+        matSuffix>{{name.invalid && (name.dirty || name.touched) ? 'error' : '&nbsp;'}}
+      </mat-icon>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-error #ageError>{{getErrorMessage(age)}}</mat-error>
+      <input matInput type="number" placeholder="age" formControlName="age">
+      <mat-icon aria-hidden="true" (mouseenter)="ageError.classList.toggle('showError');" (mouseleave)="ageError.classList.toggle('showError');"
+        matSuffix>{{age.invalid && (age.dirty || age.touched) ? 'error' : '&nbsp;'}}
+      </mat-icon>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-error #emailError>{{getErrorMessage(email)}}</mat-error>
+      <input matInput type="email" placeholder="email" formControlName="email">
+      <mat-icon aria-hidden="true" (mouseenter)="emailError.classList.toggle('showError');" (mouseleave)="emailError.classList.toggle('showError');"
+        matSuffix>{{email.invalid && (email.dirty || email.touched) ? 'error' : '&nbsp;'}}
+      </mat-icon>
+    </mat-form-field>
+    <div formGroupName="address">
+      <h5>address:</h5>
+      <mat-form-field>
+        <mat-error #streetError>{{getErrorMessage(street)}}</mat-error>
+        <input matInput type="text" placeholder="street" formControlName="street">
+        <mat-icon aria-hidden="true" (mouseenter)="streetError.classList.toggle('showError');" (mouseleave)="streetError.classList.toggle('showError');"
+          matSuffix>{{street.invalid && (street.dirty || street.touched) ? 'error' : '&nbsp;'}}
+        </mat-icon>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-error #cityError>{{getErrorMessage(city)}}</mat-error>
+        <input matInput type="text" placeholder="city" formControlName="city">
+        <mat-icon aria-hidden="true" (mouseenter)="cityError.classList.toggle('showError');" (mouseleave)="cityError.classList.toggle('showError');"
+          matSuffix>{{city.invalid && (city.dirty || city.touched) ? 'error' : '&nbsp;'}}
+        </mat-icon>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="state" formControlName="state" [(value)]="state">
+          <mat-option *ngFor="let state of states" [value]="state.abbr">
+            {{ state.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
-  </div>
-</form>
-<ul>
-  <li *ngFor="let hobby of hobbies; let i = index ">{{i+1}} {{hobby}}
-    <button (click)="removeHobby($event,i)">X</button>
-  </li>
-</ul>
+    <button mat-raised-button color="primary" [disabled]="!formUser.valid">edit user</button>
+  </form>
+</div>
+<div>
+  <h3>hobbies:</h3>
+  <form [formGroup]="formHobby" (submit)="addHobby($event, hobby.value)" novalidate autocomplete="off">
+    <mat-form-field>
+      <mat-error #hobbyError>{{getErrorMessage(hobby)}}</mat-error>
+      <input matInput type="text" placeholder="hobby" formControlName="hobby">
+      <mat-icon aria-hidden="true" (mouseenter)="hobbyError.classList.toggle('showError');" (mouseleave)="hobbyError.classList.toggle('showError');"
+        matSuffix>{{hobby.invalid && (hobby.dirty || hobby.touched) ? 'error' : '&nbsp;'}}
+      </mat-icon>
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="!formHobby.valid">add hobby</button>
+  </form>
+</div>
+<div>
+  <ul>
+    <li *ngFor="let hobby of user.hobbies; let i = index ">{{i+1}} {{hobby}}
+      <button (click)="removeHobby($event,i)">X</button>
+    </li>
+  </ul>
+</div>
 
 <h3>posts:</h3>
 <div *ngFor="let post of posts">
