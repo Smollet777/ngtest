@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
 
 import { DataService } from '../../services/data.service';
 
-import { Address } from '../../interfaces/address.interface';
+import { User } from '../../models/user.model';
+
 import { Post } from '../../interfaces/post.interface';
 
 @Component({
@@ -15,19 +15,11 @@ import { Post } from '../../interfaces/post.interface';
 
 export class UserComponent {
 
-  form: FormGroup;
-
-  name: string = 'John Doe';
-  age: number = 30;
-  email: string = 'john@doe.com';
-  address: Address;
-  hobbies: string[];
+  user = new User('John Doe', 30, 'john@doe.com', { street: '50 Main st.', city: 'Boston', state: 'MA' }, ['write code', 'watch movies', 'listen to music']);
   posts: Post[];
   error: string;
 
   constructor(private DataService: DataService, private fb: FormBuilder) {
-    this.address = { street: '50 Main st.', city: 'Boston', state: 'MA' }
-    this.hobbies = ['write code', 'watch movies', 'listen to music']
 
     this.DataService.getPosts().subscribe((posts: Post[]) => {
       this.posts = posts;
