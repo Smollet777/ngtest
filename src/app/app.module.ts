@@ -11,17 +11,20 @@ import { UserComponent } from './components/user/user.component';
 import { AboutComponent } from './components/about/about.component';
 
 import { DataService } from './services/data.service';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const appRoutes: Routes = [
   { path: '', component: UserComponent },
-  { path: 'about', component: AboutComponent }
+  { path: 'about', component: AboutComponent },
+  { path: '**', component: NotFoundComponent }
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    AboutComponent
+    AboutComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
