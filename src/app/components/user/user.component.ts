@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
+import { AnotherService } from '../../services/another.service';
+
 import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  styleUrls: ['./user.component.scss'],
+  providers: [AnotherService]
 })
 
 export class UserComponent implements OnInit {
@@ -14,69 +17,12 @@ export class UserComponent implements OnInit {
   formHobby: FormGroup;
 
   user = new User('John Doe', 30, 'john@doe.com', { street: '50 Main st.', city: 'Boston', state: 'MA' }, ['write code', 'watch movies', 'listen to music']);
-  states: object = [
-    { abbr: 'AL', name: 'Alabama' },
-    { abbr: 'AK', name: 'Alaska' },
-    { abbr: 'AZ', name: 'Arizona' },
-    { abbr: 'AR', name: 'Arkansas' },
-    { abbr: 'CA', name: 'California' },
-    { abbr: 'CO', name: 'Colorado' },
-    { abbr: 'CT', name: 'Connecticut' },
-    { abbr: 'DE', name: 'Delaware' },
-    { abbr: 'FL', name: 'Florida' },
-    { abbr: 'GA', name: 'Georgia' },
-    { abbr: 'HI', name: 'Hawaii' },
-    { abbr: 'ID', name: 'Idaho' },
-    { abbr: 'IL', name: 'Illinois' },
-    { abbr: 'IN', name: 'Indiana' },
-    { abbr: 'IA', name: 'Iowa' },
-    { abbr: 'KS', name: 'Kansas' },
-    { abbr: 'KY', name: 'Kentucky' },
-    { abbr: 'LA', name: 'Louisiana' },
-    { abbr: 'ME', name: 'Maine' },
-    { abbr: 'MD', name: 'Maryland' },
-    { abbr: 'MA', name: 'Massachusetts' },
-    { abbr: 'MI', name: 'Michigan' },
-    { abbr: 'MN', name: 'Minnesota' },
-    { abbr: 'MS', name: 'Mississippi' },
-    { abbr: 'MO', name: 'Missouri' },
-    { abbr: 'MT', name: 'Montana' },
-    { abbr: 'NE', name: 'Nebraska' },
-    { abbr: 'NV', name: 'Nevada' },
-    { abbr: 'NH', name: 'New Hampshire' },
-    { abbr: 'NJ', name: 'New Jersey' },
-    { abbr: 'NM', name: 'New Mexico' },
-    { abbr: 'NY', name: 'New York' },
-    { abbr: 'NC', name: 'North Carolina' },
-    { abbr: 'ND', name: 'North Dakota' },
-    { abbr: 'OH', name: 'Ohio' },
-    { abbr: 'OK', name: 'Oklahoma' },
-    { abbr: 'OR', name: 'Oregon' },
-    { abbr: 'PA', name: 'Pennsylvania' },
-    { abbr: 'RI', name: 'Rhode Island' },
-    { abbr: 'SC', name: 'South Carolina' },
-    { abbr: 'SD', name: 'South Dakota' },
-    { abbr: 'TN', name: 'Tennessee' },
-    { abbr: 'TX', name: 'Texas' },
-    { abbr: 'UT', name: 'Utah' },
-    { abbr: 'VT', name: 'Vermont' },
-    { abbr: 'VA', name: 'Virginia' },
-    { abbr: 'WA', name: 'Washington' },
-    { abbr: 'WV', name: 'West Virginia' },
-    { abbr: 'WI', name: 'Wisconsin' },
-    { abbr: 'WY', name: 'Wyoming' },
-    { abbr: 'DC', name: 'District of Columbia' },
-    { abbr: 'AS', name: 'American Samoa' },
-    { abbr: 'GU', name: 'Guam' },
-    { abbr: 'MP', name: 'Northern Mariana Islands' },
-    { abbr: 'PR', name: 'Puerto Rico' },
-    { abbr: 'UM', name: 'United States Minor Islands' },
-    { abbr: 'VI', name: 'Virgin Islands' }
-  ];
+  states: object = []
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private userSevice: AnotherService, private fb: FormBuilder) { }
 
   ngOnInit() {
+
     this.formUser = this.fb.group({
       'name': [this.user.name, Validators.required],
       'age': [this.user.age, [Validators.required, Validators.min(1)]],
@@ -92,6 +38,8 @@ export class UserComponent implements OnInit {
     this.formHobby = this.fb.group({
       'hobby': ['', Validators.required],
     });
+
+    this.getStates();
   }
 
   get name() { return this.formUser.get('name'); }
@@ -125,6 +73,10 @@ export class UserComponent implements OnInit {
     if (hobby) {
       this.user.hobbies.push(hobby);
     }
+  }
+
+  getStates(): void {
+    this.states = this.userSevice.getStates();
   }
 
 }
