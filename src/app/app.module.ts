@@ -4,18 +4,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { MaterialModule } from './material.module'
+import { MaterialModule } from './modules/material.module';
+
+import { DataService } from './services/data.service';
+
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
 import { AboutComponent } from './components/about/about.component';
-
-import { DataService } from './services/data.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { PostsComponent } from './components/posts/posts.component';
 
 const appRoutes: Routes = [
   { path: '', component: UserComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'posts', component: PostsComponent },
   { path: '**', component: NotFoundComponent }
 ]
 
@@ -24,7 +27,8 @@ const appRoutes: Routes = [
     AppComponent,
     UserComponent,
     AboutComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,

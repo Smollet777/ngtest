@@ -1,11 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
-import { DataService } from '../../services/data.service';
-
 import { User } from '../../models/user.model';
-
-import { Post } from '../../interfaces/post.interface';
 
 @Component({
   selector: 'app-user',
@@ -13,13 +9,11 @@ import { Post } from '../../interfaces/post.interface';
   styleUrls: ['./user.component.scss']
 })
 
-export class UserComponent {
+export class UserComponent implements OnInit {
   formUser: FormGroup;
   formHobby: FormGroup;
 
   user = new User('John Doe', 30, 'john@doe.com', { street: '50 Main st.', city: 'Boston', state: 'MA' }, ['write code', 'watch movies', 'listen to music']);
-  posts: Post[];
-  error: string;
   states: object = [
     { abbr: 'AL', name: 'Alabama' },
     { abbr: 'AK', name: 'Alaska' },
@@ -80,14 +74,9 @@ export class UserComponent {
     { abbr: 'VI', name: 'Virgin Islands' }
   ];
 
-  constructor(private DataService: DataService, private fb: FormBuilder) {
+  constructor(private fb: FormBuilder) { }
 
-    this.DataService.getPosts().subscribe((posts: Post[]) => {
-      this.posts = posts;
-    }, // success path
-      error => this.error = error // error path
-    );
-
+  ngOnInit() {
     this.formUser = this.fb.group({
       'name': [this.user.name, Validators.required],
       'age': [this.user.age, [Validators.required, Validators.min(1)]],
