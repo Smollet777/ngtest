@@ -14,6 +14,7 @@ import { UserComponent } from './components/user/user.component';
 import { AboutComponent } from './components/about/about.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PostsComponent } from './components/posts/posts.component';
+import { EmailValidatorDirective } from './directives/email-validator.directive';
 
 const appRoutes: Routes = [
   { path: '', component: UserComponent },
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
     UserComponent,
     AboutComponent,
     NotFoundComponent,
-    PostsComponent
+    PostsComponent,
+    EmailValidatorDirective
   ],
   imports: [
     BrowserModule,

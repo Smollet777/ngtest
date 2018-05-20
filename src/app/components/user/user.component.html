@@ -22,7 +22,7 @@
     </mat-form-field>
     <mat-form-field>
       <mat-error #emailError>{{getErrorMessage(email)}}</mat-error>
-      <input matInput type="email" placeholder="email" formControlName="email">
+      <input EmailValidator matInput type="email" placeholder="email" formControlName="email">
       <mat-icon aria-hidden="true" (mouseenter)="emailError.classList.toggle('showError');" (mouseleave)="emailError.classList.toggle('showError');"
         matSuffix>{{email.invalid && (email.dirty || email.touched) ? 'error' : '&nbsp;'}}
       </mat-icon>

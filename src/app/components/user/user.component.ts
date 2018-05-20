@@ -26,8 +26,7 @@ export class UserComponent implements OnInit {
     this.formUser = this.fb.group({
       'name': [this.user.name, Validators.required],
       'age': [this.user.age, [Validators.required, Validators.min(1)]],
-      'email': [this.user.email, [Validators.required,
-      Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}')]],
+      'email': [this.user.email, Validators.required],
       'address': this.fb.group({
         'street': [this.user.address.street, Validators.required],
         'city': [this.user.address.city, Validators.required],
@@ -53,7 +52,7 @@ export class UserComponent implements OnInit {
 
   getErrorMessage(ac: AbstractControl) {
     return ac.hasError('required') ? 'You must enter a value' :
-      ac.hasError('pattern') ? 'Not a valid value' :
+      ac.hasError('validateEmail') ? 'Invalid e-mail format' :
         ac.hasError('min') ? 'Value must be greater' :
           '';
   }
