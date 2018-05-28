@@ -9,7 +9,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from "@angular/material";
 import { MatSidenavModule } from "@angular/material";
 import { MatListModule } from "@angular/material";
-import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   imports: [
@@ -21,7 +20,6 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     , MatToolbarModule
     , MatSidenavModule
     , MatListModule
-    , FlexLayoutModule
   ],
   exports: [
     MatInputModule
@@ -32,7 +30,6 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     , MatToolbarModule
     , MatSidenavModule
     , MatListModule
-    , FlexLayoutModule
   ],
 })
 export class MaterialModule { }

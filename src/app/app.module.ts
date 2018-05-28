@@ -3,18 +3,19 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LayoutModule } from '@angular/cdk/layout';
 
 import { MaterialModule } from './modules/material.module';
 
 import { DataService } from './services/data.service';
 
-
+import { EmailValidatorDirective } from './directives/email-validator.directive';
 import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
 import { AboutComponent } from './components/about/about.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PostsComponent } from './components/posts/posts.component';
-import { EmailValidatorDirective } from './directives/email-validator.directive';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 const appRoutes: Routes = [
   { path: '', component: UserComponent },
@@ -30,14 +31,16 @@ const appRoutes: Routes = [
     AboutComponent,
     NotFoundComponent,
     PostsComponent,
-    EmailValidatorDirective
+    EmailValidatorDirective,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     MaterialModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LayoutModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
