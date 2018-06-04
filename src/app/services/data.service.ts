@@ -1,25 +1,32 @@
-
-import { throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
+import { throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
 
-import { Post } from '../interfaces/post.interface';
+import { Post } from '../models/post.model';
+import { Comment } from '../models/comment.model';
 
 @Injectable()
 export class DataService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) { }
 
-  }
-
-  getPosts() {
+  getPosts(): Observable<Post[]> {
     return this.http.get<Post[]>('https://jsonplaceholder.typicode.com/posts')
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError)
-      );;
+      );
+  }
+
+  getComments(): Observable<Comment[]> {
+    return this.http.get<Comment[]>('https://jsonplaceholder.typicode.com/comments')
+      .pipe(
+        retry(3), // retry a failed request up to 3 times
+        catchError(this.handleError)
+      );
   }
 
   private handleError(error: HttpErrorResponse) {

@@ -16,11 +16,13 @@ import { AboutComponent } from './components/about/about.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { DataTableComponent } from './components/data-table/data-table.component';
 
 const appRoutes: Routes = [
   { path: '', component: UserComponent },
   { path: 'about', component: AboutComponent },
   { path: 'posts', component: PostsComponent },
+  { path: 'comments', component: DataTableComponent },
   { path: '**', component: NotFoundComponent }
 ]
 
@@ -32,7 +34,8 @@ const appRoutes: Routes = [
     NotFoundComponent,
     PostsComponent,
     EmailValidatorDirective,
-    NavbarComponent
+    NavbarComponent,
+    DataTableComponent
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { DataService } from '../../services/data.service';
 
-import { Post } from '../../interfaces/post.interface';
+import { Post } from '../../models/post.model';
 
 @Component({
   selector: 'app-posts',
