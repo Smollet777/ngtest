@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort } from '@angular/material';
-import { DataTableDataSource } from './data-table-datasource';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
 import { DataService } from '../../services/data.service';
+import { Comment } from '../../models/comment.model';
 
 @Component({
   selector: 'data-table',
@@ -12,12 +12,20 @@ import { DataService } from '../../services/data.service';
 export class DataTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  dataSource: DataTableDataSource;
-
+  dataSource: MatTableDataSource<Comment>;
+  error: string;
   displayedColumns = ['postId', 'id', 'name', 'email', 'body'];
+
   constructor(private _dataService: DataService) { }
 
   ngOnInit() {
-    this.dataSource = new DataTableDataSource(this._dataService, this.paginator, this.sort);
+    this._dataService.getComments()
+      .subscribe(result => {
+        this.dataSource = new MatTableDataSource<Comment>(result);
+        this.dataSource.sort = this.sort;
+        this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+        this.dataSource.paginator = this.paginator;
+      },
+        error => this.error = error);
   }
 }
