@@ -18,6 +18,12 @@ export class DataTableComponent implements OnInit {
 
   constructor(private _dataService: DataService) { }
 
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.dataSource.filter = filterValue;
+  }
+
   ngOnInit() {
     this._dataService.getComments()
       .subscribe(result => {

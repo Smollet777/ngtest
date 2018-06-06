@@ -1,4 +1,10 @@
-<div class="mat-elevation-z8">
+<div *ngIf="error; else elseBlock">{{error}}</div>
+<ng-template #elseBlock class="mat-elevation-z8">
+  <mat-form-field>
+    <mat-icon aria-hidden="true" matSuffix>search</mat-icon>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+
   <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
 
     <!-- postId Column -->
@@ -37,4 +43,4 @@
 
   <mat-paginator showFirstLastButtons [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100, 250]">
   </mat-paginator>
-</div>
+</ng-template>
