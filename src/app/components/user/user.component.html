@@ -9,21 +9,21 @@
     <mat-form-field>
       <mat-error #nameError>{{getErrorMessage(name)}}</mat-error>
       <input matInput type="text" placeholder="name" formControlName="name">
-      <mat-icon aria-hidden="true" (mouseenter)="nameError.classList.toggle('showError');" (mouseleave)="nameError.classList.toggle('showError');"
+      <mat-icon color="warn" aria-hidden="true" (mouseenter)="nameError.classList.toggle('showError');" (mouseleave)="nameError.classList.toggle('showError');"
         matSuffix>{{name.invalid && (name.dirty || name.touched) ? 'error' : '&nbsp;'}}
       </mat-icon>
     </mat-form-field>
     <mat-form-field>
       <mat-error #ageError>{{getErrorMessage(age)}}</mat-error>
       <input matInput type="number" placeholder="age" formControlName="age">
-      <mat-icon aria-hidden="true" (mouseenter)="ageError.classList.toggle('showError');" (mouseleave)="ageError.classList.toggle('showError');"
+      <mat-icon color="warn" aria-hidden="true" (mouseenter)="ageError.classList.toggle('showError');" (mouseleave)="ageError.classList.toggle('showError');"
         matSuffix>{{age.invalid && (age.dirty || age.touched) ? 'error' : '&nbsp;'}}
       </mat-icon>
     </mat-form-field>
     <mat-form-field>
       <mat-error #emailError>{{getErrorMessage(email)}}</mat-error>
       <input EmailValidator matInput type="email" placeholder="email" formControlName="email">
-      <mat-icon aria-hidden="true" (mouseenter)="emailError.classList.toggle('showError');" (mouseleave)="emailError.classList.toggle('showError');"
+      <mat-icon color="warn" aria-hidden="true" (mouseenter)="emailError.classList.toggle('showError');" (mouseleave)="emailError.classList.toggle('showError');"
         matSuffix>{{email.invalid && (email.dirty || email.touched) ? 'error' : '&nbsp;'}}
       </mat-icon>
     </mat-form-field>
@@ -32,14 +32,14 @@
       <mat-form-field>
         <mat-error #streetError>{{getErrorMessage(street)}}</mat-error>
         <input matInput type="text" placeholder="street" formControlName="street">
-        <mat-icon aria-hidden="true" (mouseenter)="streetError.classList.toggle('showError');" (mouseleave)="streetError.classList.toggle('showError');"
+        <mat-icon color="warn" aria-hidden="true" (mouseenter)="streetError.classList.toggle('showError');" (mouseleave)="streetError.classList.toggle('showError');"
           matSuffix>{{street.invalid && (street.dirty || street.touched) ? 'error' : '&nbsp;'}}
         </mat-icon>
       </mat-form-field>
       <mat-form-field>
         <mat-error #cityError>{{getErrorMessage(city)}}</mat-error>
         <input matInput type="text" placeholder="city" formControlName="city">
-        <mat-icon aria-hidden="true" (mouseenter)="cityError.classList.toggle('showError');" (mouseleave)="cityError.classList.toggle('showError');"
+        <mat-icon color="warn" aria-hidden="true" (mouseenter)="cityError.classList.toggle('showError');" (mouseleave)="cityError.classList.toggle('showError');"
           matSuffix>{{city.invalid && (city.dirty || city.touched) ? 'error' : '&nbsp;'}}
         </mat-icon>
       </mat-form-field>
@@ -60,7 +60,7 @@
     <mat-form-field>
       <mat-error #hobbyError>{{getErrorMessage(hobby)}}</mat-error>
       <input matInput type="text" placeholder="hobby" formControlName="hobby">
-      <mat-icon aria-hidden="true" (mouseenter)="hobbyError.classList.toggle('showError');" (mouseleave)="hobbyError.classList.toggle('showError');"
+      <mat-icon color="warn" aria-hidden="true" (mouseenter)="hobbyError.classList.toggle('showError');" (mouseleave)="hobbyError.classList.toggle('showError');"
         matSuffix>{{hobby.invalid && (hobby.dirty || hobby.touched) ? 'error' : '&nbsp;'}}
       </mat-icon>
     </mat-form-field>
