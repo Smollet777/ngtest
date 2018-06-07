@@ -7,8 +7,6 @@ import { LayoutModule } from '@angular/cdk/layout';
 
 import { MaterialModule } from './modules/material.module';
 
-import { DataService } from './services/data.service';
-
 import { EmailValidatorDirective } from './directives/email-validator.directive';
 import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
@@ -45,7 +43,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     LayoutModule
   ],
-  providers: [DataService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

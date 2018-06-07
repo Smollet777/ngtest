@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
-import { throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { Observable } from 'rxjs/Observable';
 
 import { Post } from '../models/post.model';
 import { Comment } from '../models/comment.model';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DataService {
 
   constructor(private http: HttpClient) { }
