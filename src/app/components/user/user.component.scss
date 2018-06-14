@@ -9,13 +9,9 @@ div{
 }
 .showError{
   animation: 0.5s showAlert;
-  opacity: 1;
 }
 
 mat-error{  
-  background-color: $red;
-  opacity: 0;
-  color: white;
   animation: 0.5s hideAlert;
 }
 

@@ -1,7 +1,7 @@
 <div *ngIf="error; else elseBlock">{{error}}</div>
 <ng-template #elseBlock class="mat-elevation-z8">
   <mat-form-field>
-    <mat-icon aria-hidden="true" matSuffix>search</mat-icon>
+    <mat-icon color="primary" aria-hidden="true" matSuffix>search</mat-icon>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
   </mat-form-field>
 

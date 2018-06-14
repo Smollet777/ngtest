@@ -70,7 +70,7 @@
 <div>
   <ul>
     <li *ngFor="let hobby of user.hobbies; let i = index ">{{i+1}} {{hobby}}
-      <button (click)="removeHobby($event,i)">X</button>
+      <button mat-raised-button color="accent" (click)="removeHobby($event,i)">remove</button>
     </li>
   </ul>
 </div>
