@@ -13,13 +13,8 @@
     <button mat-button routerLinkActive="active" routerLink="/posts">Posts</button>
     <button mat-button routerLinkActive="active" routerLink="/comments">Comments</button>
   </div>
-  <mat-form-field color="accent">
-    <mat-select [formControl]="theme" (ngModelChange)="themeChange(theme.value)">
-      <mat-option *ngFor="let theme of themes" [value]="theme.value">
-        {{theme.viewValue}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+
+  <app-theme-switcher color="accent"></app-theme-switcher>
 
 </mat-toolbar>
 

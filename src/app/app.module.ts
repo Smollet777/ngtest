@@ -15,6 +15,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DataTableComponent } from './components/data-table/data-table.component';
+import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component';
 
 const appRoutes: Routes = [
   { path: '', component: UserComponent },
@@ -33,7 +34,8 @@ const appRoutes: Routes = [
     PostsComponent,
     EmailValidatorDirective,
     NavbarComponent,
-    DataTableComponent
+    DataTableComponent,
+    ThemeSwitcherComponent
   ],
   imports: [
     BrowserModule,

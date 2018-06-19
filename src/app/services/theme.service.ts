@@ -13,4 +13,11 @@ export class ThemeService {
     this.emitChangeSource.next(change);
   }
 
+  getThemeList() {
+    return [
+      { value: 'my-light-theme', viewValue: 'light theme' },
+      { value: 'my-dark-theme', viewValue: 'dark theme' }
+    ];
+  }
+
 }
