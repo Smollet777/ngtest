@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AnotherService } from '../../services/another.service';
 
@@ -49,13 +49,6 @@ export class UserComponent implements OnInit {
   get state() { return this.formUser.get('address.state'); }
 
   get hobby() { return this.formHobby.get('hobby'); }
-
-  getErrorMessage(ac: AbstractControl) {
-    return ac.hasError('required') ? 'You must enter a value' :
-      ac.hasError('validateEmail') ? 'Invalid e-mail format' :
-        ac.hasError('min') ? 'Value must be greater' :
-          '';
-  }
 
   addUser(event: Event) {
     event.preventDefault();

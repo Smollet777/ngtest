@@ -7,21 +7,45 @@
 <div>
   <form [formGroup]="formUser" (submit)="addUser($event)" novalidate autocomplete="off">
     <mat-form-field>
-      <mat-error #nameError>{{getErrorMessage(name)}}</mat-error>
+      <mat-error #nameError>
+        <div *ngIf="name.errors">
+          <div *ngIf="name.errors.required">
+            Field is required.
+          </div>
+        </div>
+      </mat-error>
       <input matInput type="text" placeholder="name" formControlName="name">
       <mat-icon color="warn" aria-hidden="true" (mouseenter)="nameError.classList.toggle('showError');" (mouseleave)="nameError.classList.toggle('showError');"
         matSuffix>{{name.invalid && (name.dirty || name.touched) ? 'error' : '&nbsp;'}}
       </mat-icon>
     </mat-form-field>
     <mat-form-field>
-      <mat-error #ageError>{{getErrorMessage(age)}}</mat-error>
+      <mat-error #ageError>
+        <div *ngIf="age.errors">
+          <div *ngIf="age.errors.required">
+            Field is required.
+          </div>
+          <div *ngIf="age.errors.min">
+            Value must be greater.
+          </div>
+        </div>
+      </mat-error>
       <input matInput type="number" placeholder="age" formControlName="age">
       <mat-icon color="warn" aria-hidden="true" (mouseenter)="ageError.classList.toggle('showError');" (mouseleave)="ageError.classList.toggle('showError');"
         matSuffix>{{age.invalid && (age.dirty || age.touched) ? 'error' : '&nbsp;'}}
       </mat-icon>
     </mat-form-field>
     <mat-form-field>
-      <mat-error #emailError>{{getErrorMessage(email)}}</mat-error>
+      <mat-error #emailError>
+        <div *ngIf="email.errors">
+          <div *ngIf="email.errors.required">
+            Field is required.
+          </div>
+          <div>
+            Invalid e-mail format.
+          </div>
+        </div>
+      </mat-error>
       <input EmailValidator matInput type="email" placeholder="email" formControlName="email">
       <mat-icon color="warn" aria-hidden="true" (mouseenter)="emailError.classList.toggle('showError');" (mouseleave)="emailError.classList.toggle('showError');"
         matSuffix>{{email.invalid && (email.dirty || email.touched) ? 'error' : '&nbsp;'}}
@@ -30,14 +54,26 @@
     <div formGroupName="address">
       <h5>address:</h5>
       <mat-form-field>
-        <mat-error #streetError>{{getErrorMessage(street)}}</mat-error>
+        <mat-error #streetError>
+          <div *ngIf="street.errors">
+            <div *ngIf="street.errors.required">
+              Field is required.
+            </div>
+          </div>
+        </mat-error>
         <input matInput type="text" placeholder="street" formControlName="street">
         <mat-icon color="warn" aria-hidden="true" (mouseenter)="streetError.classList.toggle('showError');" (mouseleave)="streetError.classList.toggle('showError');"
           matSuffix>{{street.invalid && (street.dirty || street.touched) ? 'error' : '&nbsp;'}}
         </mat-icon>
       </mat-form-field>
       <mat-form-field>
-        <mat-error #cityError>{{getErrorMessage(city)}}</mat-error>
+        <mat-error #cityError>
+          <div *ngIf="city.errors">
+            <div *ngIf="city.errors.required">
+              Field is required.
+            </div>
+          </div>
+        </mat-error>
         <input matInput type="text" placeholder="city" formControlName="city">
         <mat-icon color="warn" aria-hidden="true" (mouseenter)="cityError.classList.toggle('showError');" (mouseleave)="cityError.classList.toggle('showError');"
           matSuffix>{{city.invalid && (city.dirty || city.touched) ? 'error' : '&nbsp;'}}
