@@ -94,11 +94,7 @@
   <h3>hobbies:</h3>
   <form [formGroup]="formHobby" (submit)="addHobby($event, hobby.value)" novalidate autocomplete="off">
     <mat-form-field>
-      <mat-error #hobbyError>{{getErrorMessage(hobby)}}</mat-error>
       <input matInput type="text" placeholder="hobby" formControlName="hobby">
-      <mat-icon color="warn" aria-hidden="true" (mouseenter)="hobbyError.classList.toggle('showError');" (mouseleave)="hobbyError.classList.toggle('showError');"
-        matSuffix>{{hobby.invalid && (hobby.dirty || hobby.touched) ? 'error' : '&nbsp;'}}
-      </mat-icon>
     </mat-form-field>
     <button mat-raised-button color="primary" [disabled]="!formHobby.valid">add hobby</button>
   </form>
