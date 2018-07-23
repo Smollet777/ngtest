@@ -42,8 +42,7 @@ export class DataService {
         `body was: ${error.error}`);
     }
     // return an observable with a user-facing error message
-    //return Observable.throw(error);
     return throwError(new Error(`Error! ${error.message}`));
-  };
+  }
 
 }

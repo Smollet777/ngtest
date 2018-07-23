@@ -5,6 +5,7 @@ import { DataService } from '../../services/data.service';
 import { Comment } from '../../models/comment.model';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'data-table',
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.css']

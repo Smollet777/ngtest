@@ -23,7 +23,7 @@ const appRoutes: Routes = [
   { path: 'posts', component: PostsComponent },
   { path: 'comments', component: DataTableComponent },
   { path: '**', component: NotFoundComponent }
-]
+];
 
 @NgModule({
   declarations: [

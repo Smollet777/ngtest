@@ -14,10 +14,10 @@ export class PostsComponent implements OnInit {
   error: string;
   posts: Post[];
 
-  constructor(private DataService: DataService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.DataService.getPosts().subscribe((posts: Post[]) => {
+    this.dataService.getPosts().subscribe((posts: Post[]) => {
       this.posts = posts;
     }, // success path
       error => this.error = error // error path

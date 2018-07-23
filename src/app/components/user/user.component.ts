@@ -16,8 +16,9 @@ export class UserComponent implements OnInit {
   formUser: FormGroup;
   formHobby: FormGroup;
 
-  user = new User('John Doe', 30, 'john@doe.com', { street: '50 Main st.', city: 'Boston', state: 'MA' }, ['write code', 'watch movies', 'listen to music']);
-  states: object = []
+  user = new User('John Doe', 30, 'john@doe.com', { street: '50 Main st.', city: 'Boston', state: 'MA' },
+    ['write code', 'watch movies', 'listen to music']);
+  states: object = [];
 
   constructor(private userSevice: AnotherService, private fb: FormBuilder) { }
 

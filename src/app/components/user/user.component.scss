@@ -1,38 +1,38 @@
 $red:rgb(240, 56, 56);
-
-mat-form-field{
+mat-form-field {
   display: block;
 }
 
-div{
+div {
   margin: 20px 0;
 }
-.showError{
+
+.showError {
   animation: 0.5s showAlert;
 }
 
-mat-error{  
+mat-error {
   animation: 0.5s hideAlert;
 }
 
 @keyframes showAlert {
   from {
-      opacity:0;
-      transform: translateY(-20px);
+    opacity: 0;
+    transform: translateY(-20px);
   }
   to {
-      opacity:1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
 @keyframes hideAlert {
   from {
-      opacity:1;
-      transform: translateY();
+    opacity: 1;
+    transform: translateY();
   }
   to {
-      opacity:0;
-      transform: translateY(-20px);
+    opacity: 0;
+    transform: translateY(-20px);
   }
 }

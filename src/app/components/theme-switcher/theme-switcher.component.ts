@@ -13,11 +13,11 @@ export class ThemeSwitcherComponent {
   themes = this.themeService.getThemeList();
 
   defaultTheme = this.themes[0].value;
-  //selector with default theme
+  // selector with default theme
   theme = new FormControl(this.defaultTheme);
 
   constructor(private themeService: ThemeService, private overlayContainer: OverlayContainer) {
-    //set up default theme
+    // set up default theme
     this.themeChange(this.defaultTheme);
     this.overlayContainer.getContainerElement().classList.add(this.defaultTheme);
   }
