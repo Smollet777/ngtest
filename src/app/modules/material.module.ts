@@ -1,6 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material';
@@ -15,7 +13,6 @@ import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/mate
     , MatButtonModule
     , MatIconModule
     , MatSelectModule
-    , BrowserAnimationsModule
     , MatToolbarModule
     , MatSidenavModule
     , MatListModule
@@ -28,7 +25,6 @@ import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/mate
     , MatButtonModule
     , MatIconModule
     , MatSelectModule
-    , BrowserAnimationsModule
     , MatToolbarModule
     , MatSidenavModule
     , MatListModule
