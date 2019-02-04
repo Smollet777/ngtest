@@ -1,12 +1,12 @@
 <mat-toolbar color="primary">
 
-  <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="(isHandset | async)!.matches">
+  <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
     <!-- open/close icon -->
     <mat-icon aria-label="Side nav toggle icon">{{drawer.opened ? 'close' : 'menu'}}</mat-icon>
   </button>
   <span class="brand">NgTest</span>
   <span class="menu-spacer"></span>
-  <div *ngIf="!(isHandset | async)!.matches">
+  <div *ngIf="!(isHandset$ | async)">
     <!-- desktop -->
     <button mat-button routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/">User</button>
     <button mat-button routerLinkActive="active" routerLink="/about">About</button>
@@ -21,11 +21,13 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav-content>
 
-    <mat-sidenav #drawer class="sidenav" fixedInViewport="false" [ngClass]="{hidden: !(isHandset | async)!.matches}" [attr.role]="isHandset ? 'dialog' : 'navigation'"
-      [mode]="(isHandset | async)!.matches ? 'over' : 'side'" [opened]="!(isHandset | async)!.matches">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport="false" [ngClass]="{hidden: !(isHandset$ | async)}"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
       <mat-nav-list>
         <!-- mobile -->
-        <a mat-list-item (click)="drawer.toggle()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/">User</a>
+        <a mat-list-item (click)="drawer.toggle()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+          routerLink="/">User</a>
         <a mat-list-item (click)="drawer.toggle()" routerLinkActive="active" routerLink="/about">About</a>
         <a mat-list-item (click)="drawer.toggle()" routerLinkActive="active" routerLink="/posts">Posts</a>
         <a mat-list-item (click)="drawer.toggle()" routerLinkActive="active" routerLink="/comments">Comments</a>
