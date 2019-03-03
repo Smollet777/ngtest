@@ -12,6 +12,13 @@ ng s -o
 ---
 ### Ng features testing and practiсе
 
+Lazy load _about, posts,comments_ components with `preloadingStrategy: PreloadAllModules`
+
+Navbar:
+
+- Material navbar
+- ThemeSwitcher component
+
 User route:
 
 - Forms (validation, template driven, reactive, directives)
