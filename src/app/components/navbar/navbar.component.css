@@ -1,5 +1,9 @@
-.sidenav-container {
-  height: 100%;
+.mat-sidenav-content {
+  min-height: 88vh;
+}
+
+.mat-toolbar {
+  height: 12vh;
 }
 
 .sidenav {
