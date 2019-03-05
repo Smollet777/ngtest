@@ -2,6 +2,7 @@ import { MaterialModule } from './material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { AboutComponent } from '../components/about/about.component';
 import { PostsComponent } from '../components/posts/posts.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   imports: [
     CommonModule
     , MaterialModule
+    , InfiniteScrollModule
     , RouterModule.forChild(routes)
   ],
   declarations: [

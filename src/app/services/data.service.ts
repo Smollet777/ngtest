@@ -14,8 +14,8 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>('https://jsonplaceholder.typicode.com/posts')
+  getPosts(limit: number, page = 1): Observable<Post[]> {
+    return this.http.get<Post[]>(`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=${limit}`)
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError)

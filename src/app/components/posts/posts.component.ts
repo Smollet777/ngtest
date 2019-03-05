@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DataService } from '../../services/data.service';
+import { BehaviorSubject } from 'rxjs';
+import { take, map } from 'rxjs/operators';
 
-import { Post } from '../../models/post.model';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-posts',
@@ -11,17 +12,31 @@ import { Post } from '../../models/post.model';
 })
 export class PostsComponent implements OnInit {
 
-  error: string;
-  posts: Post[];
+  posts$ = new BehaviorSubject([]);
+
+  private readonly limit = 5;
+  private page = 1;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.dataService.getPosts().subscribe((posts: Post[]) => {
-      this.posts = posts;
-    }, // success path
-      error => this.error = error // error path
-    );
+    this.getPosts();
+  }
+
+  private getPosts() {
+    this.dataService
+      .getPosts(this.limit, this.page++).pipe(
+        map(posts => {
+          const currentPosts = this.posts$.getValue();
+          this.posts$.next(currentPosts.concat(posts));
+        }),
+        take(1)
+      )
+      .subscribe();
+  }
+
+  onScroll() {
+    this.getPosts();
   }
 
 }

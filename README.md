@@ -25,6 +25,7 @@ User route:
 
 Posts route:
 
+ - infinite scroll with [ngx-infinite-scroll](https://www.npmjs.com/package/ngx-infinite-scroll)
  - api (https://jsonplaceholder.typicode.com/posts)
  - TODO replace placeholder data with bd data
   
