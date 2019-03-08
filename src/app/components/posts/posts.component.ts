@@ -13,6 +13,7 @@ import { DataService } from '../../services/data.service';
 export class PostsComponent implements OnInit {
 
   posts$ = new BehaviorSubject([]);
+  loading = true;
 
   private readonly limit = 5;
   private page = 1;
@@ -24,6 +25,7 @@ export class PostsComponent implements OnInit {
   }
 
   private getPosts() {
+    this.loading = true;
     this.dataService
       .getPosts(this.limit, this.page++).pipe(
         map(posts => {
@@ -32,7 +34,7 @@ export class PostsComponent implements OnInit {
         }),
         take(1)
       )
-      .subscribe();
+      .subscribe(_ => this.loading = false);
   }
 
   onScroll() {

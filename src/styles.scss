@@ -1,4 +1,5 @@
 @import "~@angular/material/theming";
+@import "node_modules/loaders.css/src/loaders";
 
 @include mat-core();
 
@@ -30,4 +31,26 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+#loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &>div {
+    background-color: black;
+  }
+}
+
+.loader {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, -10%);
+
+  .my-loader {
+    background-color: gray;
+  }
 }
