@@ -1,3 +1,12 @@
-<p>
-  about works!
-</p>
+<app-accordion>
+  <app-accordion-group *ngFor="let section of sections">
+    <app-accordion-header #header="accordionHeader">
+      {{ section.title }}
+      <mat-icon color="primary" aria-hidden="true" matSuffix>{{header.isOpen ? 'expand_less' : 'expand_more'}}
+      </mat-icon>
+    </app-accordion-header>
+    <app-accordion-content>
+      {{ section.description }}
+    </app-accordion-content>
+  </app-accordion-group>
+</app-accordion>
