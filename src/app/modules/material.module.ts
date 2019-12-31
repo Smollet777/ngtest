@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 
 import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
-import { MatToolbarModule, MatSidenavModule, MatListModule } from '@angular/material';
-import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   imports: [

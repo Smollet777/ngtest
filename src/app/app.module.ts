@@ -2,7 +2,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule, Routes, PreloadingStrategy, PreloadAllModules } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
 
@@ -17,7 +17,10 @@ import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switch
 
 const routes: Routes = [
   { path: '', component: UserComponent, pathMatch: 'full' },
-  { path: '', loadChildren: './modules/lazy.module#LazyModule' },
+  {
+    path: '', loadChildren: () => import('./modules/lazy.module')
+      .then(m => m.LazyModule)
+  },
   { path: '**', component: NotFoundComponent }
 ];
 
