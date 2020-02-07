@@ -13,8 +13,8 @@ import { Comment } from '../../models/comment.model';
   styleUrls: ['./data-table.component.css']
 })
 export class DataTableComponent implements OnInit {
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   dataSource: MatTableDataSource<Comment>;
   error: string;
   displayedColumns = ['postId', 'id', 'name', 'email', 'body'];
