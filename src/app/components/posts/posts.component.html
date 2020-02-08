@@ -1,5 +1,5 @@
 <div *ngIf="loading">
-  <loaders-css [loader]="'ball-spin-fade-loader'" [loaderClass]="'my-loader'"></loaders-css>
+  <loaders-css class="loader" [loader]="'ball-spin-fade-loader'" [color]="'black'"></loaders-css>
 </div>
 <div class="mt-5" *ngFor="let post of posts$ | async">
   <h4>{{post.title}}</h4>

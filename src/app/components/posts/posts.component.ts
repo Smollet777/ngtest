@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { take, map } from 'rxjs/operators';
 
+import { LoadersCSS } from 'ngx-loaders-css';
+
 import { DataService } from '../../services/data.service';
 
 @Component({

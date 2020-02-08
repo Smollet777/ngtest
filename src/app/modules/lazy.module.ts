@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { LoadersCssModule } from 'angular2-loaders-css';
+import { NgxLoadersCssModule } from 'ngx-loaders-css';
 
 import { AboutComponent } from '../components/about/about.component';
 import { PostsComponent } from '../components/posts/posts.component';
@@ -21,7 +21,7 @@ const routes: Routes = [
     , MaterialModule
     , InfiniteScrollModule
     , RouterModule.forChild(routes)
-    , LoadersCssModule
+    , NgxLoadersCssModule
   ],
   declarations: [
     AboutComponent
